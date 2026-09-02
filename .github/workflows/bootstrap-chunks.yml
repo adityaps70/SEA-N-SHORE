@@ -1,0 +1,38 @@
+name: Expand Sea N Shore production source from chunks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bootstrap/part-*'
+      - '.github/workflows/bootstrap-chunks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  expand-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reassemble and expand production source
+        shell: bash
+        run: |
+          cat bootstrap/part-* > /tmp/sea-n-shore-source.tar.gz.b64
+          base64 --decode /tmp/sea-n-shore-source.tar.gz.b64 > /tmp/sea-n-shore-source.tar.gz
+          gzip -t /tmp/sea-n-shore-source.tar.gz
+          tar -xzf /tmp/sea-n-shore-source.tar.gz -C .
+          rm -rf bootstrap
+          rm -f .github/workflows/bootstrap.yml
+          rm -f .github/workflows/bootstrap-chunks.yml
+      - name: Commit expanded source
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: add Sea N Shore production application"
+          git push origin HEAD:main
