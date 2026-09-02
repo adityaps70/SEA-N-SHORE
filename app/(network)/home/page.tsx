@@ -1,6 +1,6 @@
 import { Feed } from '@/components/feed';
 import { Card } from '@/components/ui';
-import { courses, events, jobs } from '@/lib/data/seed';
+import { courses, currentUser, events, jobs, posts, profiles } from '@/lib/data/seed';
 import Link from 'next/link';
 import { ArrowRight, CalendarDays, GraduationCap, Sparkles } from 'lucide-react';
 
@@ -21,6 +21,6 @@ export default function HomePage(){
       <Card className="p-4"><div className="flex items-start justify-between"><div><div className="text-xs font-black uppercase tracking-[.1em] text-[#7c90a0]">Continue learning</div><div className="mt-2 font-black text-[#173b59]">{courses[0].title}</div><div className="mt-1 text-xs text-[#6f8495]">{courses[0].progress}% complete</div></div><GraduationCap size={19} className="text-[#1167d8]"/></div><Link href="/learn" className="mt-3 inline-flex items-center gap-1 text-xs font-black text-[#1167d8]">Resume course <ArrowRight size={13}/></Link></Card>
       <Card className="p-4"><div className="flex items-start justify-between"><div><div className="text-xs font-black uppercase tracking-[.1em] text-[#7c90a0]">Upcoming event</div><div className="mt-2 font-black text-[#173b59]">{events[0].title}</div><div className="mt-1 text-xs text-[#6f8495]">{events[0].date} · {events[0].time}</div></div><CalendarDays size={19} className="text-[#1167d8]"/></div><Link href="/events" className="mt-3 inline-flex items-center gap-1 text-xs font-black text-[#1167d8]">View events <ArrowRight size={13}/></Link></Card>
     </div>
-    <Feed currentUser={currentUser} initialPosts={feed.posts} initialProfiles={feed.profiles}/>
+    <Feed currentUser={currentUser} initialPosts={posts} initialProfiles={profiles}/>
   </div>
 }
