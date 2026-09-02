@@ -1,0 +1,6 @@
+import { EventGrid } from '@/components/marketplaces';
+import { Card } from '@/components/ui';
+import { getEvents } from '@/lib/repositories/catalog';
+import { Award, Radio, Users } from 'lucide-react';
+export const metadata = { title: 'Maritime Events' };
+export default async function EventsPage(){const liveEvents=await getEvents();return <div className="space-y-4"><div><div className="sns-page-title">Maritime events</div><p className="sns-page-copy mt-1">Webinars, conferences, workshops, awards and networking—connected directly to your professional graph.</p></div><div className="grid gap-3 sm:grid-cols-3"><Card className="p-4"><Radio size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Live webinars</b><span className="text-xs text-[#728799]">Technical and career sessions</span></Card><Card className="p-4"><Users size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Networking</b><span className="text-xs text-[#728799]">Meet peers, recruiters, experts</span></Card><Card className="p-4"><Award size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Event archive</b><span className="text-xs text-[#728799]">Recordings + speakers + media</span></Card></div><EventGrid initialEvents={liveEvents}/></div>}

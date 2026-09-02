@@ -1,0 +1,6 @@
+import { MentorMarketplace } from '@/components/marketplaces';
+import { Card } from '@/components/ui';
+import { getMentors } from '@/lib/repositories/catalog';
+import { CalendarDays, ShieldCheck, Video } from 'lucide-react';
+export const metadata = { title: 'Mentorship' };
+export default async function MentorshipPage(){const liveMentors=await getMentors();return <div className="space-y-4"><div><div className="sns-page-title">Mentorship marketplace</div><p className="sns-page-copy mt-1">Book experienced maritime leaders and personal-growth experts for focused one-to-one guidance.</p></div><div className="grid gap-3 sm:grid-cols-3"><Card className="p-4"><ShieldCheck size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Verified experts</b><span className="text-xs text-[#728799]">Industry credentials reviewed</span></Card><Card className="p-4"><CalendarDays size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Live availability</b><span className="text-xs text-[#728799]">Book by time and expertise</span></Card><Card className="p-4"><Video size={19} className="text-[#1167d8]"/><b className="mt-3 block text-lg text-[#173b59]">Video consultations</b><span className="text-xs text-[#728799]">Private professional sessions</span></Card></div><MentorMarketplace initialMentors={liveMentors}/></div>}

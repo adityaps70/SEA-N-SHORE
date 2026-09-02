@@ -1,0 +1,6 @@
+import { CommunityGroups } from '@/components/marketplaces';
+import { Card } from '@/components/ui';
+import { getGroups } from '@/lib/repositories/catalog';
+import { MessageSquareText, ShieldCheck, Users } from 'lucide-react';
+export const metadata = { title: 'Community' };
+export default async function CommunityPage(){const liveGroups=await getGroups();return <div className="space-y-4"><div><div className="sns-page-title">Professional communities</div><p className="sns-page-copy mt-1">Join role, vessel, career and technology communities built for meaningful industry discussion.</p></div><div className="grid gap-3 sm:grid-cols-3"><Card className="p-4"><Users className="text-[#1167d8]" size={19}/><b className="mt-3 block text-lg text-[#173b59]">38k+ professionals</b><span className="text-xs text-[#728799]">Across maritime disciplines</span></Card><Card className="p-4"><MessageSquareText className="text-[#1167d8]" size={19}/><b className="mt-3 block text-lg text-[#173b59]">Daily discussions</b><span className="text-xs text-[#728799]">Technical + career + safety</span></Card><Card className="p-4"><ShieldCheck className="text-[#1167d8]" size={19}/><b className="mt-3 block text-lg text-[#173b59]">Expert-led groups</b><span className="text-xs text-[#728799]">Verified moderators</span></Card></div><CommunityGroups initialGroups={liveGroups}/></div>}

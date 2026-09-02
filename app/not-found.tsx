@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import { Compass } from 'lucide-react';
+export default function NotFound(){return <main className="grid min-h-screen place-items-center bg-[#eef4f8] p-5"><div className="sns-card max-w-lg p-8 text-center"><div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#eaf3ff] text-[#1167d8]"><Compass/></div><h1 className="mt-4 text-2xl font-black text-[#173b59]">This route is off course.</h1><p className="mt-2 text-sm leading-6 text-[#667f91]">The page may have moved or the link may be incomplete.</p><Link href="/home" className="sns-button sns-button-primary mt-5">Return to Sea N Shore</Link></div></main>}

@@ -1,0 +1,6 @@
+import type { ReactNode } from 'react';
+export function Avatar({initials,size='md'}:{initials:string;size?:'sm'|'md'|'lg'}){return <div className={`sns-avatar sns-avatar-${size}`}>{initials}</div>}
+export function Verified({label='Verified'}:{label?:string}){return <span className="sns-pill sns-pill-blue"><span className="grid h-4 w-4 place-items-center rounded-full bg-[#1167d8] text-[10px] text-white">✓</span>{label}</span>}
+export function Card({children,className=''}:{children:ReactNode;className?:string}){return <section className={`sns-card ${className}`}>{children}</section>}
+export function Empty({title,copy}:{title:string;copy:string}){return <div className="rounded-2xl border border-dashed border-[#cddbe6] bg-[#f8fbfd] p-8 text-center"><div className="font-bold text-[#173b59]">{title}</div><p className="mt-1 text-sm text-[#708497]">{copy}</p></div>}
+export function Stat({value,label,trend}:{value:string;label:string;trend?:string}){return <div className="rounded-2xl border border-[#dce6ee] bg-white p-4"><div className="text-2xl font-black tracking-[-.04em] text-[#08233d]">{value}</div><div className="mt-1 text-xs font-semibold text-[#718396]">{label}</div>{trend&&<div className="mt-2 text-xs font-bold text-[#13875d]">{trend}</div>}</div>}
