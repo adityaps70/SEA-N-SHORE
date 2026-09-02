@@ -26,8 +26,7 @@ jobs:
           gzip -t /tmp/sea-n-shore-source.tar.gz
           tar -xzf /tmp/sea-n-shore-source.tar.gz -C .
           rm -rf bootstrap
-          rm -f .github/workflows/bootstrap.yml
-          rm -f .github/workflows/bootstrap-chunks.yml
+          git checkout -- .github/workflows
       - name: Commit expanded source
         shell: bash
         run: |
@@ -37,4 +36,4 @@ jobs:
           git commit -m "feat: add Sea N Shore production application"
           git push origin HEAD:main
 
-# All production source chunks are present; this revision triggers expansion from current main.
+# Keep workflow files untouched in the Actions-generated commit; connector cleanup follows after expansion.
