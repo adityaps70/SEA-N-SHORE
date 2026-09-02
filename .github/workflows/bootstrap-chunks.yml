@@ -26,6 +26,7 @@ jobs:
           gzip -t /tmp/sea-n-shore-source.tar.gz
           tar -xzf /tmp/sea-n-shore-source.tar.gz -C .
           rm -rf bootstrap
+          rm -f .github/workflows/verify.yml
           git checkout -- .github/workflows
       - name: Commit expanded source
         shell: bash
@@ -36,4 +37,4 @@ jobs:
           git commit -m "feat: add Sea N Shore production application"
           git push origin HEAD:main
 
-# Keep workflow files untouched in the Actions-generated commit; connector cleanup follows after expansion.
+# The normal verify workflow is added separately after this source-only commit lands.
